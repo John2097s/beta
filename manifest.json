@@ -1,0 +1,58 @@
+{
+  "name": "NEXUS Quest Manager",
+  "short_name": "NEXUS",
+  "description": "Gamifizierter Produktivitäts-RPG — XP, Karten, Achievements, Lootboxen",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080a10",
+  "theme_color": "#00e5ff",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["productivity", "games"],
+  "id": "/nexus-quest-manager/",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quests",
+      "short_name": "Quests",
+      "description": "Tasks öffnen",
+      "url": "./index.html#tasks",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Inventar",
+      "short_name": "Inventar",
+      "description": "Inventar öffnen",
+      "url": "./index.html#profile",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

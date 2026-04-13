@@ -1,0 +1,492 @@
+/*
+╔══════════════════════════════════════════════════════════════╗
+║  variables.css — Design Tokens                               ║
+║                                                              ║
+║  Hier findest du ALLE Farben, Abstände, Fonts und Größen.    ║
+║  Ändere diese Werte um das gesamte Design anzupassen.        ║
+║                                                              ║
+║  ANPASSEN:                                                   ║
+║  • Hauptfarbe ändern → --cyan Wert tauschen                  ║
+║  • Schriftart ändern → --font-display / --font-body          ║
+║  • Dunkleres/helleres Theme → --bg-* Werte anpassen          ║
+╚══════════════════════════════════════════════════════════════╝
+*/
+
+:root {
+
+  /* ── FARBEN: Haupt-Palette ───────────────────────────────── */
+  --cyan:   #00e5ff;   /* Primärfarbe / Highlights            */
+  --amber:  #ffb300;   /* XP / Level / Gold-Elemente          */
+  --green:  #00e676;   /* Erfolge / Erledigt / Positiv        */
+  --red:    #ff1744;   /* Fehler / Gefahr / Überspringen       */
+  --purple: #d500f9;   /* Legendary / Achievements            */
+  --blue:   #2979ff;   /* Info / Secondary                    */
+
+  /* ── FARBEN: Hintergründe ────────────────────────────────── */
+  --bg-body:  #080a10;  /* Seiten-Hintergrund (tiefstes Schwarz) */
+  --bg-card:  #0e1018;  /* Karten- / Box-Hintergrund            */
+  --bg-hover: #141820;  /* Hover-State Hintergrund              */
+  --bg-input: #0c0f17;  /* Input-Felder                         */
+  --border:   #1e2535;  /* Standard-Rand                        */
+  --border-bright: #2e3a55; /* Hellerer Rand (fokussiert)        */
+
+  /* ── FARBEN: Text ────────────────────────────────────────── */
+  --text:   #e2e8f0;   /* Haupt-Textfarbe                      */
+  --muted:  #4a5568;   /* Gedimmter / sekundärer Text          */
+  --subtle: #2d3748;   /* Sehr gedimmter Text / Trenner         */
+
+  /* ── KARTEN-RARITÄTEN: Farben ────────────────────────────── */
+  /* Anpassen: Eigene Farben für jede Rarität setzen           */
+  --common:    #78909c;   /* Common   = Grau-Blau              */
+  --rare:      #2979ff;   /* Rare     = Blau                   */
+  --epic:      #d500f9;   /* Epic     = Lila                   */
+  --legendary: #ffb300;   /* Legendary = Gold                  */
+
+  /* ── SCHRIFTEN ───────────────────────────────────────────── */
+  /* Zum Ändern: Google Fonts URL in index.html tauschen       */
+  --font-display: 'Orbitron', 'Courier New', monospace;  /* Überschriften / Zahlen */
+  --font-body:    'Syne',     'Segoe UI',    sans-serif;  /* Fließtext              */
+
+  /* ── ABSTÄNDE ────────────────────────────────────────────── */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 12px;
+  --gap-lg: 16px;
+  --gap-xl: 24px;
+  --gap-2x: 32px;
+
+  /* ── RADIEN ──────────────────────────────────────────────── */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+
+  /* ── SCHATTIERUNGEN ──────────────────────────────────────── */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.5);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.6);
+
+  /* Glowing-Schatten für Neon-Effekte */
+  --glow-cyan:   0 0 12px rgba(0,229,255,.35), 0 0 24px rgba(0,229,255,.15);
+  --glow-amber:  0 0 12px rgba(255,179,0,.35),  0 0 24px rgba(255,179,0,.15);
+  --glow-green:  0 0 12px rgba(0,230,118,.35),  0 0 24px rgba(0,230,118,.15);
+  --glow-purple: 0 0 12px rgba(213,0,249,.35),  0 0 24px rgba(213,0,249,.15);
+
+  /* ── LAYOUT ──────────────────────────────────────────────── */
+  --max-width:   760px;   /* Maximale Breite des Inhalts       */
+  --header-h:    64px;    /* Header-Höhe (für padding-top)     */
+  --panel-pad:   16px;    /* Panel-Innenabstand (mobile)       */
+  --panel-pad-d: 24px;    /* Panel-Innenabstand (desktop)      */
+
+  /* ── TRANSITIONS ─────────────────────────────────────────── */
+  --ease: cubic-bezier(.4,0,.2,1);  /* Standard-Easing           */
+  --t-fast:   0.15s var(--ease);
+  --t-normal: 0.25s var(--ease);
+  --t-slow:   0.4s  var(--ease);
+}
+
+/* ── COSMETICS: Theme-Overrides ────────────────────────────────
+   Diese Klassen werden vom cosmetics.js per JavaScript
+   auf das <body>-Element angewendet.
+   Füge hier eigene Themes hinzu!
+────────────────────────────────────────────────────────────── */
+
+/* Theme: Golden Dawn (freigeschaltet ab Level 10) */
+body.theme-golden {
+  --cyan: #ffb300;
+  --glow-cyan: 0 0 12px rgba(255,179,0,.4), 0 0 24px rgba(255,179,0,.2);
+}
+
+/* Theme: Dark Matter (freigeschaltet ab Level 25) */
+body.theme-dark-matter {
+  --cyan: #9e9e9e;
+  --bg-body: #050507;
+  --bg-card: #0a0a0d;
+  --glow-cyan: 0 0 12px rgba(158,158,158,.3), 0 0 24px rgba(158,158,158,.1);
+}
+
+/* Theme: Plasma (freigeschaltet ab 10.000 XP) */
+body.theme-plasma {
+  --cyan: #e040fb;
+  --glow-cyan: 0 0 12px rgba(224,64,251,.4), 0 0 24px rgba(224,64,251,.2);
+}
+
+/* Frame: Gold (freigeschaltet ab Level 50) */
+body.frame-gold   .avatar { border-color: var(--amber) !important; box-shadow: var(--glow-amber) !important; }
+
+/* Frame: Rainbow (freigeschaltet ab Level 100) */
+body.frame-rainbow .avatar {
+  border-color: transparent !important;
+  background-image: linear-gradient(var(--bg-card), var(--bg-card)),
+    linear-gradient(135deg, #ff0000,#ff7700,#ffff00,#00ff00,#0000ff,#8b00ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+/* ════════════════════════════════════════════════════════════════
+   COSMETICS — Background Classes (bg-*)
+   OVERDONE ON PURPOSE — this is the selling point
+════════════════════════════════════════════════════════════════ */
+
+body.bg-grid {
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(0,229,255,.05) 0%, transparent 70%),
+    linear-gradient(rgba(0,229,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.07) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px, 28px 28px;
+}
+
+body.bg-matrix {
+  background-color: #020a02;
+  background-image: repeating-linear-gradient(
+    0deg, rgba(0,230,118,.04) 0px, rgba(0,230,118,.04) 1px,
+    transparent 1px, transparent 3px);
+  animation: bgMatrixScroll 8s linear infinite;
+}
+body.bg-matrix::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,230,118,.06) 0%, transparent 70%);
+}
+@keyframes bgMatrixScroll { from { background-position: 0 0; } to { background-position: 0 60px; } }
+
+body.bg-aurora {
+  background-color: #030610;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 20% 100%, rgba(139,92,246,.5) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 40% at 80% 0%, rgba(6,182,212,.4) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 30% at 50% 50%, rgba(16,185,129,.15) 0%, transparent 60%);
+  animation: bgAuroraShift 8s ease-in-out infinite alternate;
+}
+@keyframes bgAuroraShift {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(40deg); }
+}
+
+body.bg-ember {
+  background-color: #0a0200;
+  background-image:
+    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(239,68,68,.5) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(251,146,60,.4) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 80% 90%, rgba(234,88,12,.3) 0%, transparent 45%);
+  animation: bgEmberFlicker 3s ease-in-out infinite;
+}
+@keyframes bgEmberFlicker {
+  0%,100% { filter: brightness(1); }
+  50%     { filter: brightness(1.08); }
+}
+
+body.bg-ocean {
+  background-color: #010810;
+  background-image:
+    radial-gradient(ellipse 120% 60% at 50% 100%, rgba(6,182,212,.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(59,130,246,.2) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 20% 40%, rgba(14,165,233,.15) 0%, transparent 50%);
+  animation: bgOceanWave 6s ease-in-out infinite;
+}
+@keyframes bgOceanWave {
+  0%,100% { background-position: 0 0, 0 0, 0 0; }
+  50%     { background-position: 0 8px, 0 -4px, 0 4px; }
+}
+
+body.bg-galaxy {
+  background-color: #02010a;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 30% 20%, rgba(139,92,246,.4) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 70% 70%, rgba(236,72,153,.3) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(96,165,250,.15) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(167,139,250,.2) 0%, transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(251,191,36,.1) 0%, transparent 30%);
+  animation: bgGalaxyRotate 20s linear infinite;
+}
+@keyframes bgGalaxyRotate {
+  from { filter: hue-rotate(0deg) brightness(1); }
+  to   { filter: hue-rotate(360deg) brightness(1.05); }
+}
+
+body.bg-neon-city {
+  background-color: #050010;
+  background-image:
+    linear-gradient(180deg, transparent 40%, rgba(0,0,0,.6) 100%),
+    radial-gradient(ellipse 100% 20% at 50% 100%, rgba(0,229,255,.3) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 15% at 20% 100%, rgba(213,0,249,.3) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 15% at 80% 100%, rgba(255,45,85,.3) 0%, transparent 50%);
+  animation: bgCityFlicker 4s ease-in-out infinite;
+}
+@keyframes bgCityFlicker {
+  0%,95%,100% { opacity: 1; }
+  96%         { opacity: .97; }
+  97%         { opacity: 1; }
+  98%         { opacity: .98; }
+}
+
+body.bg-storm {
+  background-color: #030308;
+  background-image:
+    radial-gradient(ellipse 120% 40% at 30% 0%, rgba(99,102,241,.3) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 30% at 70% 0%, rgba(148,163,184,.1) 0%, transparent 50%);
+  animation: bgStormFlash 6s ease-in-out infinite;
+}
+@keyframes bgStormFlash {
+  0%,88%,92%,100% { filter: brightness(1); }
+  90%             { filter: brightness(1.4); }
+}
+
+body.bg-gold {
+  background-color: #080400;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 20%, rgba(255,179,0,.2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 20% at 80% 80%, rgba(251,191,36,.15) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 20% at 20% 70%, rgba(245,158,11,.12) 0%, transparent 50%);
+  animation: bgGoldShimmer 5s ease-in-out infinite;
+}
+@keyframes bgGoldShimmer {
+  0%,100% { filter: brightness(1) saturate(1); }
+  50%     { filter: brightness(1.1) saturate(1.2); }
+}
+
+body.bg-void-purple {
+  background-color: #050010;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,.3) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(167,139,250,.15) 0%, transparent 50%);
+  animation: bgVoidPulse 4s ease-in-out infinite;
+}
+@keyframes bgVoidPulse {
+  0%,100% { filter: brightness(1); }
+  50%     { filter: brightness(1.12); }
+}
+
+body.bg-ice {
+  background-color: #010610;
+  background-image:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(186,230,253,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(147,197,253,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 30% at 20% 60%, rgba(224,242,254,.08) 0%, transparent 50%);
+  animation: bgIceCrystal 7s ease-in-out infinite;
+}
+@keyframes bgIceCrystal {
+  0%,100% { filter: brightness(1) hue-rotate(0deg); }
+  50%     { filter: brightness(1.06) hue-rotate(10deg); }
+}
+
+body.bg-sakura {
+  background-color: #080208;
+  background-image:
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(251,207,232,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(244,114,182,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 80% 30%, rgba(249,168,212,.08) 0%, transparent 50%);
+  animation: bgSakuraFloat 8s ease-in-out infinite;
+}
+@keyframes bgSakuraFloat {
+  0%,100% { filter: brightness(1) saturate(1); }
+  50%     { filter: brightness(1.05) saturate(1.15); }
+}
+
+body.bg-blood {
+  background-color: #0a0000;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(220,38,38,.4) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(185,28,28,.3) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 20% at 20% 50%, rgba(239,68,68,.15) 0%, transparent 50%);
+  animation: bgBloodDrip 3s ease-in-out infinite;
+}
+@keyframes bgBloodDrip {
+  0%,100% { filter: brightness(1); }
+  50%     { filter: brightness(1.15) saturate(1.3); }
+}
+
+body.bg-nexus-core {
+  background-color: #000810;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0,229,255,.25) 0%, transparent 40%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,229,255,.1) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,229,255,.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(0,229,255,.04) 0%, transparent 70%);
+  animation: bgNexusPulse 4s ease-in-out infinite;
+}
+@keyframes bgNexusPulse {
+  0%,100% { filter: brightness(1); }
+  50%     { filter: brightness(1.15); }
+}
+/* Scanning line effect for Nexus Core */
+body.bg-nexus-core::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,229,255,.03) 50%);
+  background-size: 100% 4px;
+  animation: bgNexusScan 8s linear infinite;
+}
+@keyframes bgNexusScan { from { background-position: 0 0; } to { background-position: 0 100px; } }
+
+/* ════════════════════════════════════════════════════════════════
+   COSMETICS — UI Skin Classes (ui-*)
+   OVERDONE — neon, particles, glows, everything
+════════════════════════════════════════════════════════════════ */
+
+body.ui-golden     {
+  --cyan: #ffb300;
+  --glow-cyan: 0 0 16px rgba(255,179,0,.5), 0 0 40px rgba(255,179,0,.25);
+}
+body.ui-golden .topbar-fill,
+body.ui-golden .hero-xp-fill { background: linear-gradient(90deg, #f59e0b, #fde68a, #f59e0b); background-size: 200%; animation: uiGoldShimmer 2s linear infinite; }
+@keyframes uiGoldShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+
+body.ui-dark-matter {
+  --cyan: #9e9e9e;
+  --bg-body: #050507; --bg-card: #0a0a0d;
+  --glow-cyan: 0 0 12px rgba(158,158,158,.3), 0 0 24px rgba(158,158,158,.1);
+}
+
+body.ui-plasma {
+  --cyan: #e040fb;
+  --glow-cyan: 0 0 16px rgba(224,64,251,.5), 0 0 40px rgba(224,64,251,.25);
+}
+body.ui-plasma .topbar-fill,
+body.ui-plasma .hero-xp-fill { background: linear-gradient(90deg, #e040fb, #ea80fc, #e040fb); background-size: 200%; animation: uiGoldShimmer 1.5s linear infinite; }
+
+body.ui-blood-red {
+  --cyan: #f44336;
+  --glow-cyan: 0 0 18px rgba(244,67,54,.6), 0 0 45px rgba(244,67,54,.3);
+}
+body.ui-blood-red .topbar-fill,
+body.ui-blood-red .hero-xp-fill { background: linear-gradient(90deg, #b71c1c, #ef5350, #b71c1c); background-size: 200%; animation: uiGoldShimmer 1.8s linear infinite; }
+body.ui-blood-red .bnav-btn.active { text-shadow: 0 0 10px rgba(244,67,54,.8); }
+
+body.ui-neon-green {
+  --cyan: #00e676;
+  --glow-cyan: 0 0 18px rgba(0,230,118,.6), 0 0 45px rgba(0,230,118,.3);
+}
+body.ui-neon-green .topbar-fill,
+body.ui-neon-green .hero-xp-fill { background: linear-gradient(90deg, #00c853, #69f0ae, #00c853); background-size: 200%; animation: uiGoldShimmer 1.5s linear infinite; }
+body.ui-neon-green .bnav { border-top-color: rgba(0,230,118,.3); }
+
+body.ui-amber {
+  --cyan: #ff9800;
+  --glow-cyan: 0 0 16px rgba(255,152,0,.5), 0 0 38px rgba(255,152,0,.25);
+}
+body.ui-amber .topbar-fill,
+body.ui-amber .hero-xp-fill { background: linear-gradient(90deg, #e65100, #ff9800, #e65100); background-size: 200%; animation: uiGoldShimmer 2s linear infinite; }
+
+body.ui-ice-blue {
+  --cyan: #4fc3f7;
+  --glow-cyan: 0 0 16px rgba(79,195,247,.5), 0 0 38px rgba(79,195,247,.25);
+}
+body.ui-ice-blue .topbar-fill,
+body.ui-ice-blue .hero-xp-fill { background: linear-gradient(90deg, #0288d1, #81d4fa, #0288d1); background-size: 200%; animation: uiGoldShimmer 1.8s linear infinite; }
+body.ui-ice-blue .topbar { border-bottom: 1px solid rgba(79,195,247,.3); }
+
+body.ui-rose {
+  --cyan: #f48fb1;
+  --glow-cyan: 0 0 16px rgba(244,143,177,.5), 0 0 38px rgba(244,143,177,.25);
+}
+body.ui-rose .topbar-fill,
+body.ui-rose .hero-xp-fill { background: linear-gradient(90deg, #c2185b, #f48fb1, #c2185b); background-size: 200%; animation: uiGoldShimmer 2.2s linear infinite; }
+
+body.ui-toxic {
+  --cyan: #76ff03;
+  --glow-cyan: 0 0 18px rgba(118,255,3,.6), 0 0 45px rgba(118,255,3,.3);
+}
+body.ui-toxic .topbar-fill,
+body.ui-toxic .hero-xp-fill { background: linear-gradient(90deg, #33691e, #76ff03, #33691e); background-size: 200%; animation: uiGoldShimmer 1.2s linear infinite; }
+body.ui-toxic .bnav-btn.active { text-shadow: 0 0 12px rgba(118,255,3,.9); }
+
+/* HOLOGRAM — Rainbow everything */
+body.ui-hologram {
+  --cyan: #00e5ff;
+  --glow-cyan: 0 0 20px rgba(0,229,255,.5), 0 0 50px rgba(213,0,249,.3);
+}
+body.ui-hologram .topbar-fill,
+body.ui-hologram .hero-xp-fill {
+  background: linear-gradient(90deg, #00e5ff, #d500f9, #ffb300, #00e676, #00e5ff);
+  background-size: 300% 100%;
+  animation: uiHologramShift 2s linear infinite;
+}
+@keyframes uiHologramShift { 0%{background-position:0%} 100%{background-position:300%} }
+body.ui-hologram .fbtn,
+body.ui-hologram .bnav-btn.active .bi {
+  background: linear-gradient(135deg, #00e5ff, #d500f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+body.ui-hologram .topbar {
+  border-bottom: 1px solid transparent;
+  background: linear-gradient(var(--bg-body), var(--bg-body)) padding-box,
+    linear-gradient(90deg, #00e5ff, #d500f9, #ffb300) border-box;
+}
+
+/* INFERNO — Fire XP bar + glow */
+body.ui-inferno {
+  --cyan: #ff6d00;
+  --glow-cyan: 0 0 20px rgba(255,109,0,.6), 0 0 50px rgba(255,109,0,.3);
+}
+body.ui-inferno .topbar-fill,
+body.ui-inferno .hero-xp-fill {
+  background: linear-gradient(90deg, #b71c1c, #ff6d00, #ffca28, #ff6d00, #b71c1c);
+  background-size: 300%; animation: uiHologramShift 1.5s linear infinite;
+}
+body.ui-inferno .topbar { border-bottom-color: rgba(255,109,0,.4); }
+
+/* MIDNIGHT */
+body.ui-midnight {
+  --cyan: #5c6bc0;
+  --bg-body: #030308; --bg-card: #08081a;
+  --glow-cyan: 0 0 16px rgba(92,107,192,.5), 0 0 40px rgba(92,107,192,.25);
+}
+body.ui-midnight .topbar-fill,
+body.ui-midnight .hero-xp-fill { background: linear-gradient(90deg, #1a237e, #5c6bc0, #1a237e); background-size: 200%; animation: uiGoldShimmer 2s linear infinite; }
+
+/* GALAXY PRO — Star particles via pseudo-element */
+body.ui-galaxy-pro {
+  --cyan: #ce93d8;
+  --glow-cyan: 0 0 20px rgba(206,147,216,.5), 0 0 50px rgba(206,147,216,.25);
+}
+body.ui-galaxy-pro .topbar-fill,
+body.ui-galaxy-pro .hero-xp-fill {
+  background: linear-gradient(90deg, #ce93d8, #80cbc4, #ffb74d, #ce93d8);
+  background-size: 300%; animation: uiHologramShift 2.5s linear infinite;
+}
+body.ui-galaxy-pro::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(circle 1px at 15% 25%, rgba(255,255,255,.6) 0%, transparent 1px),
+    radial-gradient(circle 1px at 75% 15%, rgba(255,255,255,.5) 0%, transparent 1px),
+    radial-gradient(circle 1px at 45% 70%, rgba(255,255,255,.4) 0%, transparent 1px),
+    radial-gradient(circle 1px at 85% 55%, rgba(255,255,255,.5) 0%, transparent 1px),
+    radial-gradient(circle 1px at 25% 85%, rgba(255,255,255,.3) 0%, transparent 1px),
+    radial-gradient(circle 1px at 60% 40%, rgba(255,255,255,.4) 0%, transparent 1px),
+    radial-gradient(circle 1px at 90% 80%, rgba(255,255,255,.6) 0%, transparent 1px),
+    radial-gradient(circle 1px at 35% 50%, rgba(255,255,255,.3) 0%, transparent 1px);
+  animation: uiGalaxyStars 8s ease-in-out infinite;
+}
+@keyframes uiGalaxyStars {
+  0%,100% { opacity: .6; } 50% { opacity: 1; }
+}
+
+/* NEXUS PRIME — Ultimate animated everything */
+body.ui-nexus-prime {
+  --cyan: #00e5ff;
+  --glow-cyan: 0 0 24px rgba(0,229,255,.7), 0 0 60px rgba(0,229,255,.35);
+}
+body.ui-nexus-prime .topbar-fill,
+body.ui-nexus-prime .hero-xp-fill {
+  background: linear-gradient(90deg, #00e5ff, #ffffff, #00e5ff);
+  background-size: 200%;
+  animation: uiGoldShimmer 1s linear infinite;
+  box-shadow: 0 0 12px rgba(0,229,255,.8);
+}
+body.ui-nexus-prime .topbar {
+  border-bottom: 1px solid rgba(0,229,255,.5);
+  box-shadow: 0 2px 20px rgba(0,229,255,.15);
+}
+body.ui-nexus-prime .bnav {
+  border-top: 1px solid rgba(0,229,255,.3);
+  box-shadow: 0 -4px 20px rgba(0,229,255,.1);
+}
+body.ui-nexus-prime .bnav-btn.active { text-shadow: 0 0 16px rgba(0,229,255,1); }
+body.ui-nexus-prime .fbtn {
+  box-shadow: 0 0 20px rgba(0,229,255,.4);
+}
+
